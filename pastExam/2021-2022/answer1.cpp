@@ -56,7 +56,7 @@ class Road{
 
     Vehicle* anyVehicleAtEnd(){
         for(auto it = vehicles.begin(); it != vehicles.end(); it++){
-            if (*it != nullptr && (*it)->distance == length){
+            if (*it != nullptr && (*it)->distance == length-1){
                 return (*it);
             }
         }
