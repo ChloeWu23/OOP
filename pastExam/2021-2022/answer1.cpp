@@ -25,6 +25,7 @@ class Intersection{
     
 };
 
+//Design: pay attention, max number of vehicles on the road has to be its length
 class Road{
     public:
     int length;
@@ -42,8 +43,12 @@ class Road{
     }
 
     void addVehicles(int speed, int distance){
-        Vehicle* newVehicle = new Vehicle(speed,distance);
-        vehicles.push_back(newVehicle);
+        //debug
+        if(vehicles.size()< length){
+            Vehicle* newVehicle = new Vehicle(speed,distance);
+            vehicles.push_back(newVehicle);
+        }
+        throw runtime_error("road is full");
     }
 
     void removeVehicles(Vehicle* v){

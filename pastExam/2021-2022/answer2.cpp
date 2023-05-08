@@ -25,13 +25,10 @@ class Test{
 
 class Serology:public Test{
     private:
+    //debug here: need to make 50 be a varible,static const int here
+    static int fixedCost=50;
     public:
-    /* debug:
-    Serology(){
-        Test(50);
-    }
-    */
-   Serology():Test(50){}
+   Serology():Test(fixedCost){}
 
 
     ~Serology(){}
