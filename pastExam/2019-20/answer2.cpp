@@ -36,7 +36,7 @@ class Type{
     int prefix;
     public:
     Type(int n):prefix(n){}
-    virtual~Type =0;
+    virtual ~Type(){}
      virtual string print()=0;
      string withPrefix(){
         if(prefix>0){
@@ -109,12 +109,12 @@ class Duration:public Type{
 };
 
 
-template<char ERROR>
+template<typename T,char ERROR>
 class Table{
     private:
     int row;
     int col;
-    vector<Type*> cells;
+    vector<T*> cells; //change here, better to make T is template here
     int characterNum;
     public:
     Table(int r, int c, int cha):row(r),col(c),characterNum(cha){}
@@ -125,7 +125,7 @@ class Table{
         }
     }
 
-    void addOneCell(Type* newCell){
+    void addOneCell(T* newCell){
         cells.push_back(newCell);
 
     }
@@ -160,7 +160,7 @@ int main() {
     Type* cell4 = new Currency(60.5,"GBP",2,0);
 
     //create the table and add cells
-    Table<'#'> table(3,2,15);
+    Table<Type,'#'> table(3,2,15);
     table.addOneCell(cell1);
     table.addOneCell(cell2);
     table.addOneCell(cell3);
